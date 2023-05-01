@@ -13,7 +13,7 @@ TemplateLocationPath=
 PinSwapBy_Netlabel=1
 PinSwapBy_Pin=1
 AllowPortNetNames=0
-AllowSheetEntryNetNames=1
+AllowSheetEntryNetNames=0
 AppendSheetNumberToLocalNets=0
 NetlistSinglePinNets=0
 DefaultConfiguration=Sources
@@ -423,6 +423,40 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MQWCNVZA
 
+[Document23]
+DocumentPath=PCB\AudioDSP-2.0.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=IMQKWUCE
+
+[Document24]
+DocumentPath=DOC\JLCPCB-4Layer.OutJob
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [ProjectVariant1]
 UniqueID=AD5153A4-68FC-42DC-ADD7-058E9FDBB92D
 Description=For Assembly
@@ -430,6 +464,90 @@ AllowFabrication=0
 ParameterCount=0
 VariationCount=0
 ParamVariationCount=0
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.G1
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.G2
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM4
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM5
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM8
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM12
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.REP
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
+DItemRevisionGUID=
 
 [Configuration1]
 Name=Sources
@@ -1383,19 +1501,19 @@ MatchStrictly2=1
 PhysicalNamingFormat=$ComponentPrefix$ComponentIndex_$SheetDesignator
 GlobalIndexSortOrder=3
 GlobalIndexSortLocation=0
-UniqueIDPath0=\FDNUDNTD
-DocumentName0=IN_Connectors.SchDoc
+UniqueIDPath0=\YCHEGXES\DELZRULB
+DocumentName0=ADC_Block.SchDoc
 IsEnabled0=1
-SelectionScope0=Only Selected Parts
-Order0=13
+SelectionScope0=All
+Order0=19
 IndexEnabled0=0
 IndexStartValue0=1
 Suffix0=
-UniqueIDPath1=\RLXDRKKR\GIWPXOPM
-DocumentName1=LPF_Block.SchDoc
+UniqueIDPath1=\YCHEGXES\TPCJARWW
+DocumentName1=ADC_Block.SchDoc
 IsEnabled1=1
 SelectionScope1=All
-Order1=23
+Order1=17
 IndexEnabled1=0
 IndexStartValue1=1
 Suffix1=
@@ -1407,115 +1525,115 @@ Order2=15
 IndexEnabled2=0
 IndexStartValue2=1
 Suffix2=
-UniqueIDPath3=\TZBTBOVD
-DocumentName3=MCU_Block.SchDoc
+UniqueIDPath3=
+DocumentName3=AudioDSP-v2.0_top.SchDoc
 IsEnabled3=1
-SelectionScope3=All
-Order3=16
+SelectionScope3=Only Selected Parts
+Order3=4
 IndexEnabled3=0
 IndexStartValue3=1
 Suffix3=
-UniqueIDPath4=\UFPOOPZB
-DocumentName4=DSP_Block.SchDoc
+UniqueIDPath4=\YCHEGXES
+DocumentName4=ADC_Interface.SchDoc
 IsEnabled4=1
 SelectionScope4=All
-Order4=7
+Order4=20
 IndexEnabled4=0
 IndexStartValue4=1
 Suffix4=
-UniqueIDPath5=\YCHEGXES\DELZRULB
+UniqueIDPath5=\YCHEGXES\TQGJTSUV
 DocumentName5=ADC_Block.SchDoc
 IsEnabled5=1
 SelectionScope5=All
-Order5=19
+Order5=18
 IndexEnabled5=0
 IndexStartValue5=1
 Suffix5=
-UniqueIDPath6=\YCHEGXES\TQGJTSUV
-DocumentName6=ADC_Block.SchDoc
+UniqueIDPath6=\RLXDRKKR
+DocumentName6=LPF_Interface.SchDoc
 IsEnabled6=1
 SelectionScope6=All
-Order6=18
+Order6=24
 IndexEnabled6=0
 IndexStartValue6=1
 Suffix6=
-UniqueIDPath7=\PRHUKTFQ
-DocumentName7=DSP_Block.SchDoc
+UniqueIDPath7=\NCABPVHP
+DocumentName7=POW_Block.SchDoc
 IsEnabled7=1
 SelectionScope7=All
-Order7=6
+Order7=12
 IndexEnabled7=0
 IndexStartValue7=1
 Suffix7=
-UniqueIDPath8=\HMGNDUFP
-DocumentName8=DAC_Block.SchDoc
+UniqueIDPath8=\UFPOOPZB
+DocumentName8=DSP_Block.SchDoc
 IsEnabled8=1
 SelectionScope8=All
-Order8=5
+Order8=7
 IndexEnabled8=0
 IndexStartValue8=1
 Suffix8=
-UniqueIDPath9=\NCABPVHP
-DocumentName9=POW_Block.SchDoc
+UniqueIDPath9=\TZBTBOVD
+DocumentName9=MCU_Block.SchDoc
 IsEnabled9=1
 SelectionScope9=All
-Order9=12
+Order9=16
 IndexEnabled9=0
 IndexStartValue9=1
 Suffix9=
-UniqueIDPath10=\XQUOKVOI
-DocumentName10=OUT_Connectors.SchDoc
+UniqueIDPath10=\HMGNDUFP
+DocumentName10=DAC_Block.SchDoc
 IsEnabled10=1
-SelectionScope10=Only Selected Parts
-Order10=14
+SelectionScope10=All
+Order10=5
 IndexEnabled10=0
 IndexStartValue10=1
 Suffix10=
-UniqueIDPath11=
-DocumentName11=AudioDSP-v2.0_top.SchDoc
+UniqueIDPath11=\RLXDRKKR\AYWQNWRG
+DocumentName11=LPF_Block.SchDoc
 IsEnabled11=1
-SelectionScope11=Only Selected Parts
-Order11=4
+SelectionScope11=All
+Order11=22
 IndexEnabled11=0
 IndexStartValue11=1
 Suffix11=
-UniqueIDPath12=\RLXDRKKR\RFMLTSND
-DocumentName12=LPF_Block.SchDoc
+UniqueIDPath12=\XQUOKVOI
+DocumentName12=OUT_Connectors.SchDoc
 IsEnabled12=1
-SelectionScope12=All
-Order12=21
+SelectionScope12=Only Selected Parts
+Order12=14
 IndexEnabled12=0
 IndexStartValue12=1
 Suffix12=
-UniqueIDPath13=\YCHEGXES
-DocumentName13=ADC_Interface.SchDoc
+UniqueIDPath13=\PRHUKTFQ
+DocumentName13=DSP_Block.SchDoc
 IsEnabled13=1
 SelectionScope13=All
-Order13=20
+Order13=6
 IndexEnabled13=0
 IndexStartValue13=1
 Suffix13=
-UniqueIDPath14=\YCHEGXES\TPCJARWW
-DocumentName14=ADC_Block.SchDoc
+UniqueIDPath14=\RLXDRKKR\GIWPXOPM
+DocumentName14=LPF_Block.SchDoc
 IsEnabled14=1
 SelectionScope14=All
-Order14=17
+Order14=23
 IndexEnabled14=0
 IndexStartValue14=1
 Suffix14=
-UniqueIDPath15=\RLXDRKKR\AYWQNWRG
-DocumentName15=LPF_Block.SchDoc
+UniqueIDPath15=\FDNUDNTD
+DocumentName15=IN_Connectors.SchDoc
 IsEnabled15=1
-SelectionScope15=All
-Order15=22
+SelectionScope15=Only Selected Parts
+Order15=13
 IndexEnabled15=0
 IndexStartValue15=1
 Suffix15=
-UniqueIDPath16=\RLXDRKKR
-DocumentName16=LPF_Interface.SchDoc
+UniqueIDPath16=\RLXDRKKR\RFMLTSND
+DocumentName16=LPF_Block.SchDoc
 IsEnabled16=1
 SelectionScope16=All
-Order16=24
+Order16=21
 IndexEnabled16=0
 IndexStartValue16=1
 Suffix16=
