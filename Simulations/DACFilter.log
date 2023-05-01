@@ -1,0 +1,22 @@
+Circuit: * C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-v2.0\Simulations\DACFilter.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun Apr 30 12:25:17 2023
+Total elapsed time: 0.288 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 12710
+traniter = 12705
+tranpoints = 3206
+accept = 2509
+rejected = 697
+matrix size = 135
+fillins = 143
+solver = Normal
+Thread vector: 36.6/10.0[3] 2.7/2.4[3] 3.4/2.2[3] 0.7/3.1[1]  2592/500
+Matrix Compiler1: 14.94 KB object code size  4.9/3.1/[0.8]
+Matrix Compiler2: 13.69 KB object code size  2.1/2.9/[0.7]
+
