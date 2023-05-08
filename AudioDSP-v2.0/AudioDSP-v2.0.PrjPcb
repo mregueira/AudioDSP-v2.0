@@ -462,12 +462,120 @@ UniqueID=AD5153A4-68FC-42DC-ADD7-058E9FDBB92D
 Description=For Assembly
 AllowFabrication=0
 ParameterCount=0
-VariationCount=1
+VariationCount=21
 Variation1=Designator=J11_CTRL|UniqueId=\VUBOPNGB\ZJXUINIL|Kind=1|AlternatePart= 
+Variation2=Designator=U2_POW|UniqueId=\NCABPVHP\LADCIJFV|Kind=1|AlternatePart= 
+Variation3=Designator=U1_POW|UniqueId=\NCABPVHP\BUQGCMIL|Kind=1|AlternatePart= 
+Variation4=Designator=J1_CTRL|UniqueId=\VUBOPNGB\LLAZAWTP|Kind=1|AlternatePart= 
+Variation5=Designator=J4_CTRL|UniqueId=\VUBOPNGB\XRHCWTIK|Kind=1|AlternatePart= 
+Variation6=Designator=J3_CTRL|UniqueId=\VUBOPNGB\YDFJHUKU|Kind=1|AlternatePart= 
+Variation7=Designator=J9_CTRL|UniqueId=\VUBOPNGB\MCGMMLFJ|Kind=1|AlternatePart= 
+Variation8=Designator=J10_CTRL|UniqueId=\VUBOPNGB\MTYCLWKY|Kind=1|AlternatePart= 
+Variation9=Designator=J8_CTRL|UniqueId=\VUBOPNGB\CQTXRUEV|Kind=1|AlternatePart= 
+Variation10=Designator=J7_CTRL|UniqueId=\VUBOPNGB\ZOGRLUIM|Kind=1|AlternatePart= 
+Variation11=Designator=J2_CTRL|UniqueId=\VUBOPNGB\UTYUWPZI|Kind=1|AlternatePart= 
+Variation12=Designator=J5_CTRL|UniqueId=\VUBOPNGB\CTULQEFO|Kind=1|AlternatePart= 
+Variation13=Designator=J6_CTRL|UniqueId=\VUBOPNGB\WDQZRWGL|Kind=1|AlternatePart= 
+Variation14=Designator=J1|UniqueId=\FDNUDNTD\LCYFCRVD|Kind=1|AlternatePart= 
+Variation15=Designator=J2|UniqueId=\FDNUDNTD\LCPJLQIW|Kind=1|AlternatePart= 
+Variation16=Designator=J3|UniqueId=\FDNUDNTD\ZNDXHVDR|Kind=1|AlternatePart= 
+Variation17=Designator=J4|UniqueId=\FDNUDNTD\SDUQBXXP|Kind=1|AlternatePart= 
+Variation18=Designator=J5|UniqueId=\XQUOKVOI\RFTZWKJF|Kind=1|AlternatePart= 
+Variation19=Designator=J7|UniqueId=\XQUOKVOI\RTRDXDSV|Kind=1|AlternatePart= 
+Variation20=Designator=J8|UniqueId=\XQUOKVOI\GYBRMZUW|Kind=1|AlternatePart= 
+Variation21=Designator=J6|UniqueId=\XQUOKVOI\VBCJVNUG|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [GeneratedDocument1]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.G1
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.G2
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM4
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM5
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM8
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GM12
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.REP
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0\AudioDSP-2.0.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - BOM\Bill of Materials-AudioDSP-v2.0(For Assembly).xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument22]
 DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - Pick and Place\Pick Place for AudioDSP-2.0(For Assembly).csv
 DItemRevisionGUID=
 
 [Configuration1]
