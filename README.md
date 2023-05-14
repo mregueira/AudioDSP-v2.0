@@ -1,14 +1,14 @@
-# AudioDSP-v1.0
+# AudioDSP-v2.0
 ## Description
-Audio DSP - 1.0 - First version attempt of final product
+Audio DSP - 2.0 - Second version attempt of final product
 
 ## Features
-- DC Input +5V/1A
+- DC Input +6V/1A
 - Audio Channels: up to 5.1
 - SigmaDSP ADAU1701
    - I2C control for DSP
-   - 24 bit ADC inputs x2
-   - 24 bit DAC outputs x4
 - Sampling frequency (default): 48KHz
+- 24 bit ADC PCM1862 x3
+- 24 bit DAC PCM1681 x1
 - ST uC STM32F401RxT6 with Serial Wire programming
 - LED indicators
