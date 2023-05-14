@@ -11,4 +11,9 @@ Audio DSP - 2.0 - Second version attempt of final product
 - 24 bit ADC PCM1862 x3
 - 24 bit DAC PCM1681 x1
 - ST uC STM32F401RxT6 with Serial Wire programming
-- LED indicators
+- Synchronous Clock Distribution
+- LED indicators:
+   - +3V3
+   - +5V0
+   - DSP 1
+   - DSP 2
