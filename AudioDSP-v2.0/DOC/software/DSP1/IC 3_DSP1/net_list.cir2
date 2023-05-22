@@ -1,0 +1,20 @@
+0 DCInpAlg2 O_C14_A0_P1_out Link0
+1 DCInpAlg4 O_C28_A0_P1_out Link1
+2 DCInpAlg6 O_C38_A0_P1_out Link3
+3 DCInpAlg1 O_C67_A0_P1_out Link6
+4 ICSigma100In1 O_C130_A0_P3_out Link10 O_C130_A0_P4_out Link11 O_C130_A0_P5_out Link12 O_C130_A0_P6_out Link13 O_C130_A0_P7_out Link14 O_C130_A0_P8_out Link23
+5 DCInpAlg3 O_C4_A0_P1_out Link7
+6 DCInpAlg7 O_C9_A0_P1_out Link8
+7 ParamToneIndexwStepAlgFix1 I_C0_A0_P1_in Link7 I_C0_A0_P2_in Link23 O_C0_A0_P3_out Link32
+8 GPOAlg1 I_C6_A0_P1_in Link8
+9 SWGain1940DBAlg1 I_C27_A0_P1_in Link10 I_C27_A0_P3_in Link11 I_C27_A0_P5_in Link12 I_C27_A0_P7_in Link13 I_C27_A0_P9_in Link14 O_C27_A0_P2_out Link9 O_C27_A0_P4_out Link15 O_C27_A0_P6_out Link16 O_C27_A0_P8_out Link17 O_C27_A0_P10_out Link18
+10 ParamToneIndexwStepAlgFix7 I_C56_A0_P1_in Link6 I_C56_A0_P2_in Link9 I_C56_A0_P4_in Link15 I_C56_A0_P6_in Link16 I_C56_A0_P8_in Link17 I_C56_A0_P10_in Link18 O_C56_A0_P3_out Link5 O_C56_A0_P5_out Link19 O_C56_A0_P7_out Link20 O_C56_A0_P9_out Link21 O_C56_A0_P11_out Link22
+11 ICSigma100Out6 I_C196_A0_P1_in Link32
+12 ParamToneIndexwStepAlgFix6 I_C40_A0_P1_in Link3 I_C40_A0_P2_in Link5 I_C40_A0_P4_in Link19 I_C40_A0_P6_in Link20 I_C40_A0_P8_in Link21 I_C40_A0_P10_in Link22 O_C40_A0_P3_out Link4 O_C40_A0_P5_out Link24 O_C40_A0_P7_out Link25 O_C40_A0_P9_out Link26 O_C40_A0_P11_out Link27
+13 ParamToneIndexwStepAlgFix4 I_C30_A0_P1_in Link1 I_C30_A0_P2_in Link4 I_C30_A0_P4_in Link24 I_C30_A0_P6_in Link25 I_C30_A0_P8_in Link26 I_C30_A0_P10_in Link27 O_C30_A0_P3_out Link2 O_C30_A0_P5_out Link28 O_C30_A0_P7_out Link29 O_C30_A0_P9_out Link30 O_C30_A0_P11_out Link31
+14 ParamToneIndexwStepAlgFix2 I_C16_A0_P1_in Link0 I_C16_A0_P2_in Link2 I_C16_A0_P4_in Link28 I_C16_A0_P6_in Link29 I_C16_A0_P8_in Link30 I_C16_A0_P10_in Link31 O_C16_A0_P3_out Link33 O_C16_A0_P5_out Link34 O_C16_A0_P7_out Link35 O_C16_A0_P9_out Link36 O_C16_A0_P11_out Link37
+15 ICSigma100Out1 I_C103_A0_P1_in Link33
+16 ICSigma100Out2 I_C110_A0_P1_in Link34
+17 ICSigma100Out3 I_C190_A0_P1_in Link35
+18 ICSigma100Out4 I_C192_A0_P1_in Link36
+19 ICSigma100Out5 I_C194_A0_P1_in Link37
