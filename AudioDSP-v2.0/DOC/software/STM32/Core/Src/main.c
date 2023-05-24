@@ -22,7 +22,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "DSP/SigmaStudioFW.h"
 
+#include "DSP/DSP1/DSP1_IC_1.h"
+#include "DSP/DSP1/DSP1_IC_1_PARAM.h"
+
+#include "DSP/DSP2/DSP2_IC_2.h"
+#include "DSP/DSP2/DSP2_IC_2_PARAM.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define ADC_POT 12
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,7 +57,12 @@ I2C_HandleTypeDef hi2c3;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
+HAL_StatusTypeDef stat;
 
+uint32_t value[ADC_POT]; // To store ADC values
+uint16_t pote[ADC_POT];  // Potentiometer values 0-29
+uint16_t log_in_table[30];
+uint16_t flag[ADC_POT];  // Flag for different potentiometers
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,7 +75,7 @@ static void MX_ADC1_Init(void);
 static void MX_DMA_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -114,6 +126,42 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+  // Disable DSP
+  HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_RESET);
+
+  // Disable CLK
+  HAL_GPIO_WritePin(EN_SCK_GPIO_Port, EN_SCK_Pin, GPIO_PIN_RESET);
+
+  // Configure Sampling Rate SR = Standard => 0
+  HAL_GPIO_WritePin(SR_GPIO_Port, SR_Pin, GPIO_PIN_RESET);
+  // Configure System Clock SCKO1 CSEL = 0 (default)
+  HAL_GPIO_WritePin(CSEL_GPIO_Port, CSEL_Pin, GPIO_PIN_RESET);
+  // Configure Sampling Frequency Group = 32KHz => 10
+  HAL_GPIO_WritePin(FS2_GPIO_Port, FS2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(FS1_GPIO_Port, FS1_Pin, GPIO_PIN_RESET);
+
+  // Configure PLL Mode
+  // 256 x 48KHz = 12.288MHz => 01
+  HAL_GPIO_WritePin(PLL_MODE0_GPIO_Port, PLL_MODE0_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(PLL_MODE1_GPIO_Port, PLL_MODE1_Pin, GPIO_PIN_SET);
+
+  // Enable CLK
+  HAL_GPIO_WritePin(EN_SCK_GPIO_Port, EN_SCK_Pin, GPIO_PIN_SET);
+
+  HAL_Delay(500);
+
+  // Enable DSP
+  HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
+
+  HAL_Delay(500);
+
+  default_download_IC_1();
+  HAL_Delay(500);
+  default_download_IC_2();
+  HAL_Delay(500);
+
+  HAL_TIM_Base_Start(&htim2);
+  HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -542,7 +590,50 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void SIGMA_WRITE_REGISTER_BLOCK(uint16_t devAddress, uint16_t address, uint16_t length, uint8_t *pData)
+{
+	stat = HAL_I2C_Mem_Write(&hi2c1, devAddress, address, 2, pData, length, 1000);
 
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	uint32_t i = 0;
+	uint32_t j = 0;
+
+	// For volume potentiometer
+	i = (((value[ADC_POT-1]*10)/4096)*30)/10;
+	if(pote[ADC_POT-1] != i)
+	{
+		pote[ADC_POT-1] = i;
+		flag[ADC_POT-1] = 1;
+	}
+
+	for(j=0; j<(ADC_POT-1); j++) // For filter potentiometers
+	{
+		for(i=0; i<30-1; i++)
+		{
+			if((value[j] > (log_in_table[i]+10)) && (value[j] < (log_in_table[i+1])-10))
+			{
+				if(pote[j] != i)
+				{
+					pote[j] = i;
+					flag[j] = 1;
+				}
+			}
+		}
+		if(value[j] > (log_in_table[29]+10))
+		{
+			if(pote[j] != 29)
+			{
+				pote[j] = 29;
+				flag[j] = 1;
+			}
+		}
+
+	}
+	HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
+}
 /* USER CODE END 4 */
 
 /**
