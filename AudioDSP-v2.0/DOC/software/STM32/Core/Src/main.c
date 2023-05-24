@@ -39,6 +39,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define ADC_POT 12
+#define DAC_ADDR 0x98
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,6 +59,8 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 HAL_StatusTypeDef stat;
+
+uint8_t auxData[2];
 
 uint32_t value[ADC_POT]; // To store ADC values
 uint16_t pote[ADC_POT];  // Potentiometer values 0-29
@@ -149,6 +152,11 @@ int main(void)
   HAL_GPIO_WritePin(EN_SCK_GPIO_Port, EN_SCK_Pin, GPIO_PIN_SET);
 
   HAL_Delay(500);
+
+  // Configure DAC format to I2S 16-24 bit
+//  auxData[0] = 0x04;
+//  auxData[1] = 0x09;
+//  HAL_I2C_Mem_Write(&hi2c3, DAC_ADDR, 0x09, 1, auxData, 2, 1000);
 
   // Enable DSP
   HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
