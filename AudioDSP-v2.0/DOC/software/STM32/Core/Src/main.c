@@ -29,6 +29,8 @@
 
 #include "DSP/DSP2/DSP2_IC_2.h"
 #include "DSP/DSP2/DSP2_IC_2_PARAM.h"
+
+#include "math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,6 +68,8 @@ uint32_t value[ADC_POT]; // To store ADC values
 uint16_t pote[ADC_POT];  // Potentiometer values 0-29
 uint16_t log_in_table[30];
 uint16_t flag[ADC_POT];  // Flag for different potentiometers
+
+ADI_REG_TYPE aux[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -93,7 +97,60 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	  uint16_t k = 0;
+	  uint16_t pote_aux = 0;
+	  uint16_t BandAddress[ADC_POT+1]; // Addresses of filters
+	  uint32_t vol_data[30]; // Fixed volume values
 
+	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
+	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG6_ADDR;
+	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG4_ADDR;
+	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG2_ADDR;
+	  //BandAddress[4] = MOD_BAND512_SEL_DCINPALG5_ADDR;
+	  //BandAddress[5] = MOD_BAND1K_SEL_DCINPALG1_ADDR;
+	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG6_ADDR;
+	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG4_ADDR;
+	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG2_ADDR;
+	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG5_ADDR;
+	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG3_ADDR;
+	  BandAddress[11] = MOD_VOL_ALG0_TARGET_ADDR;
+	  //BandAddress[12] = MOD_VOL_2_ALG0_TARGET_ADDR;
+
+	  vol_data[29] = 0x00800000; // 0dB
+	  vol_data[28] = 0x00721482; // -1dB
+	  vol_data[27] = 0x0065AC8C; // -2dB
+	  vol_data[26] = 0x005A9DF7; // -3dB
+	  vol_data[25] = 0x0050C335; // -4dB
+	  vol_data[24] = 0x0047FACC; // -5dB
+	  vol_data[23] = 0x004026E7; // -6dB
+	  vol_data[22] = 0x0037DFC0; // -7dB (-7.2dB)
+	  vol_data[21] = 0x0032F52C; // -8dB
+	  vol_data[20] = 0x002D6A86; // -9dB
+	  vol_data[19] = 0x00287A26; // -10dB
+	  vol_data[18] = 0x00241346; // -11dB
+	  vol_data[17] = 0x002026F3; // -12dB
+	  vol_data[16] = 0x001CA7D7; // -13dB
+	  vol_data[15] = 0x00198A13; // -14dB
+	  vol_data[14] = 0x0016C310; // -15dB
+	  vol_data[13] = 0x00144960; // -16dB
+	  vol_data[12] = 0x0012149A; // -17dB
+	  vol_data[11] = 0x00101D3F; // -18dB
+	  vol_data[10] = 0x000E5CA1; // -19dB
+	  vol_data[9] = 0x000CCCCC; // -20dB
+	  vol_data[8] = 0x000B6873; // -21dB
+	  vol_data[7] = 0x000A2ADA; // -22dB
+	  vol_data[6] = 0x00090FCB; // -23dB
+	  vol_data[5] = 0x00081385; // -24dB
+	  vol_data[4] = 0x000732AE; // -25dB
+	  vol_data[3] = 0x00066A4A; // -26dB
+	  vol_data[2] = 0x0005B7B1; // -27dB
+	  vol_data[1] = 0x00051884; // -28dB
+	  vol_data[0] = 0x00048AA7; // -29dB
+
+	  for(k=0; k<30; k++)
+	  {
+		  log_in_table[k] = 4030.0*log10(1.0+(3.0*k/10.0));
+	  }
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -124,8 +181,10 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_I2C3_Init();
+
   MX_DMA_Init();
   MX_ADC1_Init();
+
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
@@ -154,9 +213,9 @@ int main(void)
   HAL_Delay(500);
 
   // Configure DAC format to I2S 16-24 bit
-//  auxData[0] = 0x04;
-//  auxData[1] = 0x09;
-//  HAL_I2C_Mem_Write(&hi2c3, DAC_ADDR, 0x09, 1, auxData, 2, 1000);
+  auxData[0] = 0x24;
+  auxData[1] = 0x00;
+  stat = HAL_I2C_Mem_Write(&hi2c3, DAC_ADDR, 0x09, 1, auxData, 1, 1000);
 
   // Enable DSP
   HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
@@ -179,6 +238,60 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  for(k=0; k<4; k++) // Filters 32Hz - 512Hz
+	  {
+		  if(flag[k] == 1)
+		  {
+			  flag[k] = 0;
+			  aux[3] = 29 - pote[k];
+//			  HAL_I2C_Mem_Read(&hi2c1, DEVICE_ADDR_IC_1, BandAddress[k], 2, test, 4, 1000);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
+		  }
+	  }
+
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  for(k=6; k<(ADC_POT-3); k++) // Filters 1KHz - 16KHz
+	  {
+		  if(flag[k] == 1)
+		  {
+			  flag[k] = 0;
+			  aux[3] = 29 - pote[k];
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[k], 4, aux);
+		  }
+	  }
+
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  if(flag[ADC_POT-2] == 1) // Subwoofer
+	  {
+		  flag[ADC_POT-2] = 0;
+		  aux[3] = 29 - pote[ADC_POT-2];
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-2], 4, aux);
+	  }
+
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  if(flag[ADC_POT-1] == 1) // Volume
+	  {
+		  flag[ADC_POT-1] = 0;
+		  pote_aux = 29 - pote[ADC_POT-1];
+		  aux[3] = 0xFF & (vol_data[pote_aux]);
+		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux);
+	  }
   }
   /* USER CODE END 3 */
 }

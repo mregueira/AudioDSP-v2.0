@@ -1,7 +1,7 @@
 /*
  * File:           C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\DSP2\IC 2_DSP2\DSP2_IC_2_REG.h
  *
- * Created:        Tuesday, May 23, 2023 8:55:08 PM
+ * Created:        Friday, June 2, 2023 8:56:45 PM
  * Description:    DSP2:IC 2 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,

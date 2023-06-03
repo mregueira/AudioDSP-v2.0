@@ -1,7 +1,7 @@
 /*
  * File:           C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\DSP1\IC 1_DSP1\DSP1_IC_1_REG.h
  *
- * Created:        Tuesday, May 23, 2023 8:54:31 PM
+ * Created:        Thursday, June 1, 2023 11:26:10 PM
  * Description:    DSP1:IC 1 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,
