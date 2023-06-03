@@ -229,6 +229,7 @@ int main(void)
 
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -723,7 +724,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	uint32_t j = 0;
 
 	// For volume potentiometer
-	i = (((value[ADC_POT-1]*10)/4096)*30)/10;
+	i = (((value[ADC_POT-1]*100)/4096)*30)/100;
 	if(pote[ADC_POT-1] != i)
 	{
 		pote[ADC_POT-1] = i;
