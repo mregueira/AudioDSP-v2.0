@@ -1,0 +1,14 @@
+DSP1_IC_1.h:2111:6:default_download_IC_1	8	static
+DSP2_IC_2.h:2111:6:default_download_IC_2	8	static
+main.c:97:5:main	184	static
+main.c:310:6:SystemClock_Config	88	static
+main.c:354:13:MX_ADC1_Init	24	static
+main.c:516:13:MX_I2C1_Init	8	static
+main.c:550:13:MX_I2C2_Init	8	static
+main.c:584:13:MX_I2C3_Init	8	static
+main.c:618:13:MX_TIM2_Init	32	static
+main.c:661:13:MX_DMA_Init	16	static
+main.c:679:13:MX_GPIO_Init	48	static
+main.c:721:6:SIGMA_WRITE_REGISTER_BLOCK	40	static
+main.c:727:6:HAL_ADC_ConvCpltCallback	24	static
+main.c:771:6:Error_Handler	4	static,ignoring_inline_asm
