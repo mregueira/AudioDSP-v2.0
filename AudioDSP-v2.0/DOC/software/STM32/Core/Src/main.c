@@ -230,6 +230,12 @@ int main(void)
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
+  HAL_Delay(500);
+
+  for(k=0; k<ADC_POT; k++)
+  {
+	  flag[k] = 1;
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
