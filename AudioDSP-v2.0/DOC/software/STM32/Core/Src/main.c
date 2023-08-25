@@ -67,6 +67,7 @@ uint8_t auxData[2];
 uint32_t value[ADC_POT]; // To store ADC values
 uint16_t pote[ADC_POT];  // Potentiometer values 0-29
 uint16_t log_in_table[30];
+uint16_t linear_in_table[30];
 uint16_t flag[ADC_POT];  // Flag for different potentiometers
 
 ADI_REG_TYPE aux[4];
@@ -149,7 +150,8 @@ int main(void)
 
 	  for(k=0; k<30; k++)
 	  {
-		  log_in_table[k] = 4030.0*log10(1.0+(3.0*k/10.0));
+		  log_in_table[k] = 4096.0*log10(1.0+(3.0*k/10.0));
+		  linear_in_table[k] = 4096*k/30;
 	  }
   /* USER CODE END 1 */
 
@@ -230,12 +232,15 @@ int main(void)
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
-  HAL_Delay(500);
+  HAL_Delay(250);
 
   for(k=0; k<ADC_POT; k++)
   {
+	  pote[k] = 14;
 	  flag[k] = 1;
   }
+
+  HAL_Delay(250);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -729,19 +734,40 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	uint32_t i = 0;
 	uint32_t j = 0;
 
-	// For volume potentiometer
-	i = (((value[ADC_POT-1]*100)/4096)*30)/100;
-	if(pote[ADC_POT-1] != i)
+
+	for(i=0; i<30; i++) // For volume potentiometer
 	{
-		pote[ADC_POT-1] = i;
-		flag[ADC_POT-1] = 1;
+		if((i == 0) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
+		else if((i > 0) && (i < 29 ) && (value[ADC_POT-1] > (linear_in_table[i]+15)) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
+		else if((i == 29) && (value[ADC_POT-1] > (linear_in_table[i]+15)))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
 	}
 
 	for(j=0; j<(ADC_POT-1); j++) // For filter potentiometers
 	{
-		for(i=0; i<30-1; i++)
+		for(i=0; i<30; i++)
 		{
-			if((value[j] > (log_in_table[i]+10)) && (value[j] < (log_in_table[i+1])-10))
+			if((i == 0) && (value[j] < (log_in_table[i+1])-15))
 			{
 				if(pote[j] != i)
 				{
@@ -749,13 +775,21 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 					flag[j] = 1;
 				}
 			}
-		}
-		if(value[j] > (log_in_table[29]+10))
-		{
-			if(pote[j] != 29)
+			else if((i > 0) && (i < 29 ) && (value[j] > (log_in_table[i]+15)) && (value[j] < (log_in_table[i+1])-15))
 			{
-				pote[j] = 29;
-				flag[j] = 1;
+				if(pote[j] != i)
+				{
+					pote[j] = i;
+					flag[j] = 1;
+				}
+			}
+			else if((i == 29) && (value[j] > (log_in_table[i]+15)))
+			{
+				if(pote[j] != i)
+				{
+					pote[j] = i;
+					flag[j] = 1;
+				}
 			}
 		}
 

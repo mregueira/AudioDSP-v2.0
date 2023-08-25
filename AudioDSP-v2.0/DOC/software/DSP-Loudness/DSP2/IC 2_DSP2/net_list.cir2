@@ -1,0 +1,11 @@
+0 ICSigma100In1 O_C130_A0_P3_out Link11 O_C130_A0_P4_out Link9 O_C130_A0_P5_out Link7 O_C130_A0_P6_out Link5 O_C130_A0_P7_out Link3 O_C130_A0_P8_out Link1
+1 DCInpAlg3 O_C3_A0_P1_out Link0
+2 DCInpAlg1 O_C62_A0_P1_out Link12
+3 GPOAlg1 I_C0_A0_P1_in Link0
+4 ICSigma100Out6 I_C176_A0_P1_in Link1
+5 LoudnessLHExtAlg1 I_C40_A0_P1_in Link12 I_C40_A0_P2_in Link11 I_C40_A0_P4_in Link9 I_C40_A0_P6_in Link7 I_C40_A0_P8_in Link5 I_C40_A0_P10_in Link3 O_C40_A0_P3_out Link10 O_C40_A0_P5_out Link8 O_C40_A0_P7_out Link6 O_C40_A0_P9_out Link4 O_C40_A0_P11_out Link2
+6 ICSigma100Out2 I_C110_A0_P1_in Link2
+7 ICSigma100Out4 I_C171_A0_P1_in Link4
+8 ICSigma100Out5 I_C174_A0_P1_in Link6
+9 ICSigma100Out1 I_C103_A0_P1_in Link8
+10 ICSigma100Out3 I_C81_A0_P1_in Link10

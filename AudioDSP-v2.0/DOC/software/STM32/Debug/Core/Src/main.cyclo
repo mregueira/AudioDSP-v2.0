@@ -1,0 +1,14 @@
+../Core/Inc/DSP/DSP1/DSP1_IC_1.h:2111:6:default_download_IC_1	1
+../Core/Inc/DSP/DSP2/DSP2_IC_2.h:2111:6:default_download_IC_2	1
+../Core/Src/main.c:98:5:main	9
+../Core/Src/main.c:315:6:SystemClock_Config	3
+../Core/Src/main.c:359:13:MX_ADC1_Init	17
+../Core/Src/main.c:521:13:MX_I2C1_Init	2
+../Core/Src/main.c:555:13:MX_I2C2_Init	2
+../Core/Src/main.c:589:13:MX_I2C3_Init	2
+../Core/Src/main.c:623:13:MX_TIM2_Init	4
+../Core/Src/main.c:666:13:MX_DMA_Init	1
+../Core/Src/main.c:684:13:MX_GPIO_Init	1
+../Core/Src/main.c:726:6:SIGMA_WRITE_REGISTER_BLOCK	1
+../Core/Src/main.c:732:6:HAL_ADC_ConvCpltCallback	26
+../Core/Src/main.c:805:6:Error_Handler	1
