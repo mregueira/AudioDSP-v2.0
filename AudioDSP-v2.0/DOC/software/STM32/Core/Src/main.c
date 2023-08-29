@@ -103,7 +103,7 @@ int main(void)
 	  uint16_t BandAddress[ADC_POT+1]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
 
-	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
+//	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
 	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG6_ADDR;
 	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG4_ADDR;
 	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG2_ADDR;
@@ -112,7 +112,7 @@ int main(void)
 	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG6_ADDR;
 	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG4_ADDR;
 	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG2_ADDR;
-	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG5_ADDR;
+	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG1_ADDR;
 	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG3_ADDR;
 	  BandAddress[11] = MOD_VOL_ALG0_TARGET_ADDR;
 	  //BandAddress[12] = MOD_VOL_2_ALG0_TARGET_ADDR;
@@ -304,6 +304,7 @@ int main(void)
 		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
 		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux);
 	  }
+
   }
   /* USER CODE END 3 */
 }

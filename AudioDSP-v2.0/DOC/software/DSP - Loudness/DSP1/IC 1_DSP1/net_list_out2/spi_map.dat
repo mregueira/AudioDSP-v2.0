@@ -1,0 +1,16 @@
+DCInpAlg7_2 0
+DCInpAlg1_3 1
+LoudnessLHExtAlg1level_low_5 2
+LoudnessLHExtAlg1level_hi_5 3
+LoudnessLHExtAlg1iir_coeff_b0_hi_5 4
+LoudnessLHExtAlg1iir_coeff_b1_hi_5 5
+LoudnessLHExtAlg1iir_coeff_a1_hi_5 6
+LoudnessLHExtAlg1iir_coeff_b0_low_5 7
+LoudnessLHExtAlg1iir_coeff_a1_low_5 8
+LoudnessLHExtAlg1step_5 9
+Gain1940AlgNS1_6 10
+Gain1940AlgNS2_7 11
+Gain1940AlgNS3_8 12
+Gain1940AlgNS4_9 13
+Gain1940AlgNS5_10 14
+Gain1940AlgNS6_11 15

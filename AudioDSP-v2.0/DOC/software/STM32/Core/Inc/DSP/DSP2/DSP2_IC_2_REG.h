@@ -1,7 +1,7 @@
 /*
- * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\DSP\DSP2\IC 2_DSP2\DSP2_IC_2_REG.h
+ * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\STM32\Core\Inc\DSP\DSP2\DSP2_IC_2_REG.h
  *
- * Created:        Thursday, August 24, 2023 9:14:20 PM
+ * Created:        Saturday, August 26, 2023 1:40:38 PM
  * Description:    DSP2:IC 2 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,
