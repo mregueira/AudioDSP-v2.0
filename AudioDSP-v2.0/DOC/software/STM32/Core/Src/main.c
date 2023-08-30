@@ -103,7 +103,7 @@ int main(void)
 	  uint16_t BandAddress[ADC_POT+1]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
 
-//	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
+	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
 	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG6_ADDR;
 	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG4_ADDR;
 	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG2_ADDR;
@@ -239,6 +239,21 @@ int main(void)
 	  pote[k] = 14;
 	  flag[k] = 1;
   }
+  aux[0] = 0x00;
+  aux[1] = 0x00;
+  aux[2] = 0x00;
+  aux[3] = 0x00;
+
+  for(k=0; k<4; k++) // Filters 32Hz - 512Hz
+  {
+	  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
+  }
+  for(k=6; k<(ADC_POT-3); k++) // Filters 1KHz - 16KHz
+  {
+      SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[k], 4, aux);
+  }
+  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-2], 4, aux); // Subwoofer
+  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux); // Volume
 
   HAL_Delay(250);
   /* USER CODE END 2 */
@@ -260,7 +275,6 @@ int main(void)
 		  {
 			  flag[k] = 0;
 			  aux[3] = 29 - pote[k];
-//			  HAL_I2C_Mem_Read(&hi2c1, DEVICE_ADDR_IC_1, BandAddress[k], 2, test, 4, 1000);
 			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
 		  }
 	  }
