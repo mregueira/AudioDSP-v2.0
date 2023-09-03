@@ -67,6 +67,7 @@ uint8_t auxData[2];
 uint32_t value[ADC_POT]; // To store ADC values
 uint16_t pote[ADC_POT];  // Potentiometer values 0-29
 uint16_t log_in_table[30];
+uint16_t linear_in_table[30];
 uint16_t flag[ADC_POT];  // Flag for different potentiometers
 
 ADI_REG_TYPE aux[4];
@@ -111,7 +112,7 @@ int main(void)
 	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG6_ADDR;
 	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG4_ADDR;
 	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG2_ADDR;
-	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG5_ADDR;
+	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG1_ADDR;
 	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG3_ADDR;
 	  BandAddress[11] = MOD_VOL_ALG0_TARGET_ADDR;
 	  //BandAddress[12] = MOD_VOL_2_ALG0_TARGET_ADDR;
@@ -149,7 +150,8 @@ int main(void)
 
 	  for(k=0; k<30; k++)
 	  {
-		  log_in_table[k] = 4030.0*log10(1.0+(3.0*k/10.0));
+		  log_in_table[k] = 4096.0*log10(1.0+(3.0*k/10.0));
+		  linear_in_table[k] = 4096*k/30;
 	  }
   /* USER CODE END 1 */
 
@@ -230,12 +232,30 @@ int main(void)
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
-  HAL_Delay(500);
+  HAL_Delay(250);
 
   for(k=0; k<ADC_POT; k++)
   {
+	  pote[k] = 14;
 	  flag[k] = 1;
   }
+  aux[0] = 0x00;
+  aux[1] = 0x00;
+  aux[2] = 0x00;
+  aux[3] = 0x00;
+
+  for(k=0; k<4; k++) // Filters 32Hz - 512Hz
+  {
+	  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
+  }
+  for(k=6; k<(ADC_POT-3); k++) // Filters 1KHz - 16KHz
+  {
+      SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[k], 4, aux);
+  }
+  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-2], 4, aux); // Subwoofer
+  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux); // Volume
+
+  HAL_Delay(250);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -255,7 +275,6 @@ int main(void)
 		  {
 			  flag[k] = 0;
 			  aux[3] = 29 - pote[k];
-//			  HAL_I2C_Mem_Read(&hi2c1, DEVICE_ADDR_IC_1, BandAddress[k], 2, test, 4, 1000);
 			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
 		  }
 	  }
@@ -299,6 +318,7 @@ int main(void)
 		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
 		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux);
 	  }
+
   }
   /* USER CODE END 3 */
 }
@@ -729,19 +749,40 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	uint32_t i = 0;
 	uint32_t j = 0;
 
-	// For volume potentiometer
-	i = (((value[ADC_POT-1]*100)/4096)*30)/100;
-	if(pote[ADC_POT-1] != i)
+
+	for(i=0; i<30; i++) // For volume potentiometer
 	{
-		pote[ADC_POT-1] = i;
-		flag[ADC_POT-1] = 1;
+		if((i == 0) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
+		else if((i > 0) && (i < 29 ) && (value[ADC_POT-1] > (linear_in_table[i]+15)) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
+		else if((i == 29) && (value[ADC_POT-1] > (linear_in_table[i]+15)))
+		{
+			if(pote[ADC_POT-1] != i)
+			{
+				pote[ADC_POT-1] = i;
+				flag[ADC_POT-1] = 1;
+			}
+		}
 	}
 
 	for(j=0; j<(ADC_POT-1); j++) // For filter potentiometers
 	{
-		for(i=0; i<30-1; i++)
+		for(i=0; i<30; i++)
 		{
-			if((value[j] > (log_in_table[i]+10)) && (value[j] < (log_in_table[i+1])-10))
+			if((i == 0) && (value[j] < (log_in_table[i+1])-15))
 			{
 				if(pote[j] != i)
 				{
@@ -749,13 +790,21 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 					flag[j] = 1;
 				}
 			}
-		}
-		if(value[j] > (log_in_table[29]+10))
-		{
-			if(pote[j] != 29)
+			else if((i > 0) && (i < 29 ) && (value[j] > (log_in_table[i]+15)) && (value[j] < (log_in_table[i+1])-15))
 			{
-				pote[j] = 29;
-				flag[j] = 1;
+				if(pote[j] != i)
+				{
+					pote[j] = i;
+					flag[j] = 1;
+				}
+			}
+			else if((i == 29) && (value[j] > (log_in_table[i]+15)))
+			{
+				if(pote[j] != i)
+				{
+					pote[j] = i;
+					flag[j] = 1;
+				}
 			}
 		}
 

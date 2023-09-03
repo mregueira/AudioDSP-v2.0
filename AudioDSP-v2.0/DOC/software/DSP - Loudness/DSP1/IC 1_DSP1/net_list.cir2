@@ -1,0 +1,17 @@
+0 ICSigma100In1 O_C130_A0_P3_out Link1 O_C130_A0_P4_out Link2 O_C130_A0_P5_out Link3 O_C130_A0_P6_out Link4 O_C130_A0_P7_out Link5 O_C130_A0_P8_out Link6
+1 DCInpAlg7 O_C9_A0_P1_out Link0
+2 DCInpAlg1 O_C43_A0_P1_out Link7
+3 GPOAlg1 I_C6_A0_P1_in Link0
+4 LoudnessLHExtAlg1 I_C0_A0_P1_in Link7 I_C0_A0_P2_in Link1 I_C0_A0_P4_in Link2 I_C0_A0_P6_in Link3 I_C0_A0_P8_in Link4 I_C0_A0_P10_in Link5 I_C0_A0_P12_in Link6 O_C0_A0_P3_out Link14 O_C0_A0_P5_out Link15 O_C0_A0_P7_out Link16 O_C0_A0_P9_out Link17 O_C0_A0_P11_out Link18 O_C0_A0_P13_out Link19
+5 Gain1940AlgNS1 I_C27_A0_P1_in Link14 O_C27_A0_P2_out Link8
+6 Gain1940AlgNS2 I_C27_A1_P1_in Link15 O_C27_A1_P2_out Link13
+7 Gain1940AlgNS3 I_C27_A2_P1_in Link16 O_C27_A2_P2_out Link12
+8 Gain1940AlgNS4 I_C27_A3_P1_in Link17 O_C27_A3_P2_out Link11
+9 Gain1940AlgNS5 I_C27_A4_P1_in Link18 O_C27_A4_P2_out Link10
+10 Gain1940AlgNS6 I_C27_A5_P1_in Link19 O_C27_A5_P2_out Link9
+11 ICSigma100Out1 I_C103_A0_P1_in Link8
+12 ICSigma100Out5 I_C194_A0_P1_in Link9
+13 ICSigma100Out6 I_C196_A0_P1_in Link10
+14 ICSigma100Out4 I_C192_A0_P1_in Link11
+15 ICSigma100Out3 I_C190_A0_P1_in Link12
+16 ICSigma100Out2 I_C110_A0_P1_in Link13

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- *
+ * This software is distributed in the hope that it will be useful,
+ * but is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * This software may only be used to program products purchased from
+ * Analog Devices for incorporation by you into audio products that
+ * are intended for resale to audio product end users. This software
+ * may not be distributed whole or in any part to third parties.
+ *
+ * Copyright © 2023 Analog Devices, Inc. All rights reserved.
+ */
+-->
+<!--NetList XML file-->
+<NetList>
+    <IC name=" IC 1 " type="DSPSigma100">
+        <Schematic>
+            <Algorithm name="ICSigma100In1" friendlyname="170x\140x input " cell="Input1 " location="{X=1061, Y=186} " Growth="10 " GrowthB="0 " FS="48000">
+                <Link pin="O_C130_A0_P3_out" dir="out" link="Link1" />
+                <Link pin="O_C130_A0_P4_out" dir="out" link="Link2" />
+                <Link pin="O_C130_A0_P5_out" dir="out" link="Link3" />
+                <Link pin="O_C130_A0_P6_out" dir="out" link="Link4" />
+                <Link pin="O_C130_A0_P7_out" dir="out" link="Link5" />
+                <Link pin="O_C130_A0_P8_out" dir="out" link="Link6" />
+            </Algorithm>
+            <Algorithm name="DCInpAlg7" friendlyname="dc Input " cell="DC-LED " location="{X=1242, Y=-130} " Growth="0 " GrowthB="0 " FS="48000">
+                <Link pin="O_C9_A0_P1_out" dir="out" link="Link0" />
+            </Algorithm>
+            <Algorithm name="GPOAlg1" friendlyname="General Purpose Output 100 " cell="LED " location="{X=1397, Y=-105} " Growth="0 " GrowthB="0">
+                <Link pin="I_C6_A0_P1_in" dir="in" link="Link0" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out1" friendlyname="170x\140x output " cell="Output1 " location="{X=1383, Y=99} " Growth="0 " GrowthB="0">
+                <Link pin="I_C103_A0_P1_in" dir="in" link="Link1" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out2" friendlyname="170x\140x output " cell="Output2 " location="{X=1387, Y=150} " Growth="0 " GrowthB="0">
+                <Link pin="I_C110_A0_P1_in" dir="in" link="Link2" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out3" friendlyname="170x\140x output " cell="Output3 " location="{X=1386, Y=204} " Growth="0 " GrowthB="0">
+                <Link pin="I_C190_A0_P1_in" dir="in" link="Link3" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out4" friendlyname="170x\140x output " cell="Output4 " location="{X=1386, Y=281} " Growth="0 " GrowthB="0">
+                <Link pin="I_C192_A0_P1_in" dir="in" link="Link4" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out6" friendlyname="170x\140x output " cell="Output6 " location="{X=1389, Y=329} " Growth="0 " GrowthB="0">
+                <Link pin="I_C196_A0_P1_in" dir="in" link="Link5" />
+            </Algorithm>
+            <Algorithm name="ICSigma100Out5" friendlyname="170x\140x output " cell="Output5 " location="{X=1389, Y=397} " Growth="0 " GrowthB="0">
+                <Link pin="I_C194_A0_P1_in" dir="in" link="Link6" />
+            </Algorithm>
+        </Schematic>
+    </IC>
+</NetList>
