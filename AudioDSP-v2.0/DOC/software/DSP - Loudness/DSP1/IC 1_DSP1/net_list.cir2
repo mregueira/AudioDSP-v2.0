@@ -1,17 +1,20 @@
-0 ICSigma100In1 O_C130_A0_P3_out Link1 O_C130_A0_P4_out Link2 O_C130_A0_P5_out Link3 O_C130_A0_P6_out Link4 O_C130_A0_P7_out Link5 O_C130_A0_P8_out Link6
-1 DCInpAlg7 O_C9_A0_P1_out Link0
-2 DCInpAlg1 O_C43_A0_P1_out Link7
-3 GPOAlg1 I_C6_A0_P1_in Link0
-4 LoudnessLHExtAlg1 I_C0_A0_P1_in Link7 I_C0_A0_P2_in Link1 I_C0_A0_P4_in Link2 I_C0_A0_P6_in Link3 I_C0_A0_P8_in Link4 I_C0_A0_P10_in Link5 I_C0_A0_P12_in Link6 O_C0_A0_P3_out Link14 O_C0_A0_P5_out Link15 O_C0_A0_P7_out Link16 O_C0_A0_P9_out Link17 O_C0_A0_P11_out Link18 O_C0_A0_P13_out Link19
-5 Gain1940AlgNS1 I_C27_A0_P1_in Link14 O_C27_A0_P2_out Link8
-6 Gain1940AlgNS2 I_C27_A1_P1_in Link15 O_C27_A1_P2_out Link13
-7 Gain1940AlgNS3 I_C27_A2_P1_in Link16 O_C27_A2_P2_out Link12
-8 Gain1940AlgNS4 I_C27_A3_P1_in Link17 O_C27_A3_P2_out Link11
-9 Gain1940AlgNS5 I_C27_A4_P1_in Link18 O_C27_A4_P2_out Link10
-10 Gain1940AlgNS6 I_C27_A5_P1_in Link19 O_C27_A5_P2_out Link9
-11 ICSigma100Out1 I_C103_A0_P1_in Link8
-12 ICSigma100Out5 I_C194_A0_P1_in Link9
-13 ICSigma100Out6 I_C196_A0_P1_in Link10
-14 ICSigma100Out4 I_C192_A0_P1_in Link11
-15 ICSigma100Out3 I_C190_A0_P1_in Link12
-16 ICSigma100Out2 I_C110_A0_P1_in Link13
+0 DCInpAlg2 O_C14_A0_P1_out Link0
+1 DCInpAlg4 O_C28_A0_P1_out Link1
+2 DCInpAlg6 O_C38_A0_P1_out Link3
+3 DCInpAlg1 O_C67_A0_P1_out Link6
+4 ICSigma100In1 O_C130_A0_P3_out Link10 O_C130_A0_P4_out Link11 O_C130_A0_P5_out Link12 O_C130_A0_P6_out Link13 O_C130_A0_P7_out Link36 O_C130_A0_P8_out Link37
+5 DCInpAlg3 O_C4_A0_P1_out Link7
+6 DCInpAlg7 O_C9_A0_P1_out Link8
+7 ParamToneIndexwStepAlgFix1 I_C0_A0_P1_in Link7 I_C0_A0_P2_in Link37 O_C0_A0_P3_out Link35
+8 GPOAlg1 I_C6_A0_P1_in Link8
+9 SWGain1940DBAlg1 I_C27_A0_P1_in Link10 I_C27_A0_P3_in Link11 I_C27_A0_P5_in Link12 I_C27_A0_P7_in Link13 I_C27_A0_P9_in Link36 O_C27_A0_P2_out Link9 O_C27_A0_P4_out Link14 O_C27_A0_P6_out Link15 O_C27_A0_P8_out Link16 O_C27_A0_P10_out Link17
+10 ParamToneIndexwStepAlgFix7 I_C56_A0_P1_in Link6 I_C56_A0_P2_in Link9 I_C56_A0_P4_in Link14 I_C56_A0_P6_in Link15 I_C56_A0_P8_in Link16 I_C56_A0_P10_in Link17 O_C56_A0_P3_out Link5 O_C56_A0_P5_out Link18 O_C56_A0_P7_out Link19 O_C56_A0_P9_out Link20 O_C56_A0_P11_out Link21
+11 ICSigma100Out5 I_C194_A0_P1_in Link35
+12 ParamToneIndexwStepAlgFix6 I_C40_A0_P1_in Link3 I_C40_A0_P2_in Link5 I_C40_A0_P4_in Link18 I_C40_A0_P6_in Link19 I_C40_A0_P8_in Link20 I_C40_A0_P10_in Link21 O_C40_A0_P3_out Link4 O_C40_A0_P5_out Link22 O_C40_A0_P7_out Link23 O_C40_A0_P9_out Link24 O_C40_A0_P11_out Link25
+13 ParamToneIndexwStepAlgFix4 I_C30_A0_P1_in Link1 I_C30_A0_P2_in Link4 I_C30_A0_P4_in Link22 I_C30_A0_P6_in Link23 I_C30_A0_P8_in Link24 I_C30_A0_P10_in Link25 O_C30_A0_P3_out Link2 O_C30_A0_P5_out Link26 O_C30_A0_P7_out Link27 O_C30_A0_P9_out Link28 O_C30_A0_P11_out Link29
+14 ParamToneIndexwStepAlgFix2 I_C16_A0_P1_in Link0 I_C16_A0_P2_in Link2 I_C16_A0_P4_in Link26 I_C16_A0_P6_in Link27 I_C16_A0_P8_in Link28 I_C16_A0_P10_in Link29 O_C16_A0_P3_out Link30 O_C16_A0_P5_out Link31 O_C16_A0_P7_out Link32 O_C16_A0_P9_out Link33 O_C16_A0_P11_out Link34
+15 ICSigma100Out1 I_C103_A0_P1_in Link30
+16 ICSigma100Out2 I_C110_A0_P1_in Link31
+17 ICSigma100Out3 I_C190_A0_P1_in Link32
+18 ICSigma100Out4 I_C192_A0_P1_in Link33
+19 ICSigma100Out6 I_C196_A0_P1_in Link34

@@ -1,7 +1,7 @@
 /*
- * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\DSP-Loudness\DSP1\IC 1_DSP1\DSP1_IC_1_REG.h
+ * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v2.0\AudioDSP-v2.0\DOC\software\DSP - Loudness\DSP1\IC 1_DSP1\DSP1_IC_1_REG.h
  *
- * Created:        Thursday, August 24, 2023 8:05:03 PM
+ * Created:        Sunday, September 3, 2023 9:19:40 PM
  * Description:    DSP1:IC 1 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,

@@ -102,20 +102,20 @@ int main(void)
 	  uint16_t pote_aux = 0;
 	  uint16_t BandAddress[ADC_POT+1]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
+	  uint32_t boost_data[30]; // Fixed boost loudness values
 
 	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
 	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG6_ADDR;
 	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG4_ADDR;
 	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG2_ADDR;
-	  //BandAddress[4] = MOD_BAND512_SEL_DCINPALG5_ADDR;
-	  //BandAddress[5] = MOD_BAND1K_SEL_DCINPALG1_ADDR;
+	  BandAddress[4] = MOD_LOUDNESSLHEXT1_ALG0_LEVEL0_ADDR;
+	  BandAddress[5] = MOD_LOUDNESSLHEXT1_ALG0_LEVEL1_ADDR;
 	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG6_ADDR;
 	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG4_ADDR;
 	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG2_ADDR;
-	  //BandAddress[9] = MOD_BAND16K_SEL_DCINPALG1_ADDR;
+	  BandAddress[9] = MOD_LOUD_DCINPALG5_ADDR;
 	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG3_ADDR;
 	  BandAddress[11] = MOD_VOL_ALG0_TARGET_ADDR;
-	  //BandAddress[12] = MOD_VOL_2_ALG0_TARGET_ADDR;
 
 	  vol_data[29] = 0x00800000; // 0dB
 	  vol_data[28] = 0x00721482; // -1dB
@@ -147,6 +147,37 @@ int main(void)
 	  vol_data[2] = 0x0005B7B1; // -27dB
 	  vol_data[1] = 0x00051884; // -28dB
 	  vol_data[0] = 0x00048AA7; // -29dB
+
+	  boost_data[29] = 0x01400000; // 2.50
+	  boost_data[28] = 0x01333333; // 2.40
+	  boost_data[27] = 0x012B851E; // 2.34
+	  boost_data[26] = 0x01228F5C; // 2.27
+	  boost_data[25] = 0x01199999; // 2.20
+	  boost_data[24] = 0x0110A3D7; // 2.13
+	  boost_data[23] = 0x0107AE14; // 2.06
+	  boost_data[22] = 0x01000000; // 2.00
+	  boost_data[21] = 0x00F70A3D; // 1.93
+	  boost_data[20] = 0x00EE147A; // 1.86
+	  boost_data[19] = 0x00E51EB8; // 1.79
+	  boost_data[18] = 0x00DC28F5; // 1.72
+	  boost_data[17] = 0x00D47AE1; // 1.66
+	  boost_data[16] = 0x00CB851E; // 1.59
+	  boost_data[15] = 0x00C28F5C; // 1.52
+	  boost_data[14] = 0x00B99999; // 1.45
+	  boost_data[13] = 0x00B0A3D7; // 1.38
+	  boost_data[12] = 0x00A8F5C2; // 1.32
+	  boost_data[11] = 0x00A00000; // 1.25
+	  boost_data[10] = 0x00970A3D; // 1.18
+	  boost_data[9] =  0x008E147A; // 1.11
+	  boost_data[8] =  0x00851EB8; // 1.04
+	  boost_data[7] =  0x007D70A3; // 0.98
+	  boost_data[6] =  0x00747AE1; // 0.91
+	  boost_data[5] =  0x006B851E; // 0.84
+	  boost_data[4] =  0x00628F5C; // 0.77
+	  boost_data[3] =  0x00599999; // 0.70
+	  boost_data[2] =  0x0051EB85; // 0.64
+	  boost_data[1] =  0x0048F5C2; // 0.57
+	  boost_data[0] =  0x00400000; // 0.50
 
 	  for(k=0; k<30; k++)
 	  {
@@ -317,6 +348,39 @@ int main(void)
 		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
 		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
 		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux);
+	  }
+
+	  if(flag[4] == 1) // Loudness Low Boost
+	  {
+		  flag[4] = 0;
+		  pote_aux = 29 - pote[4];
+		  aux[3] = 0xFF & (boost_data[pote_aux]);
+		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[4], 4, aux);
+	  }
+
+	  if(flag[5] == 1) // Loudness High Boost
+	  {
+		  flag[5] = 0;
+		  pote_aux = 29 - pote[5];
+		  aux[3] = 0xFF & (boost_data[pote_aux]);
+		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[5], 4, aux);
+	  }
+
+	  if(flag[9] == 1) // Loudness
+	  {
+		  flag[9] = 0;
+		  pote_aux = 29 - pote[9];
+		  aux[3] = 0xFF & (vol_data[pote_aux]);
+		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[9], 4, aux);
 	  }
 
   }
